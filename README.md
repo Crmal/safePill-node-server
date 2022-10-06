@@ -1,4 +1,4 @@
-# lionking
+# safePill
 
 2022 명지대학교 캡스톤디자인2 safePill API Server
 
