@@ -7,7 +7,7 @@ RUN yarn global add @nestjs/cli
 
 COPY . .
 RUN yarn build
-RUN yarn add @types/node
+RUN yarn add -D @types/node
 
 FROM node:16.16.0-alpine
 
