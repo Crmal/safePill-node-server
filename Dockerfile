@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 RUN yarn --prod
 RUN yarn global add @nestjs/cli
+RUN yarn add -D @types/node
 
 COPY . .
 RUN yarn build
-RUN yarn add -D @types/node
 
 FROM node:16.16.0-alpine
 
