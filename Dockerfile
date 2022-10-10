@@ -16,5 +16,5 @@ COPY --from=INSTALLER /usr/src/app .
 
 ENV NODE_ENV production
 
-CMD ["yarn", "start"]
+CMD ["node", "dist/main.js"]
 EXPOSE ${PORT}
