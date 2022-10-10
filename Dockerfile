@@ -15,6 +15,7 @@ WORKDIR /usr/src/app
 COPY --from=INSTALLER /usr/src/app .
 
 ENV NODE_ENV production
+ARG PORT
 
 CMD ["node", "dist/main.js"]
 EXPOSE ${PORT}
