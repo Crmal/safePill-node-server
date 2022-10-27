@@ -17,6 +17,8 @@ COPY --from=INSTALLER /usr/src/app .
 
 ENV NODE_ENV production
 ARG PORT
+ARG DB_NAME
+ARG DB_PASSWORD
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
 EXPOSE ${PORT}
