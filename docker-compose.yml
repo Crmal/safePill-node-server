@@ -2,27 +2,17 @@ version: '3.9'
 services:
   nginx:
     image: nginx:latest
-    networks:
-      - safe_pill
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nodeDefault.conf:/etc/nginx/conf.d/default.conf
 
   nest:
     build: .
-    networks:
-      - safe_pill
     ports:
       - '3000:3000'
-
-  # backend:
-  # build: ../capstone
-  # context: backend
-  # ports:
-  # - '8080:8080'
-
-networks:
-  safe_pill:
-    driver: bridge
+    enviroment:
+      - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - LAUNCH_ENV=docker-compose
