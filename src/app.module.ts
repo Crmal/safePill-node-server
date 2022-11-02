@@ -5,6 +5,7 @@ import { typeORMConfig } from 'config/typeorm.config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PillController } from './pill/pill.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { AppService } from './app.service';
     }),
     TypeOrmModule.forRoot(typeORMConfig),
   ],
-  controllers: [AppController],
+  controllers: [AppController, PillController],
   providers: [AppService],
 })
 export class AppModule {}
