@@ -27,6 +27,7 @@ module.exports = {
     camelcase: 'error',
     'comma-dangle': ['error', 'always-multiline'],
     'class-methods-use-this': 'off',
+    'no-shadow': 0,
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-constant-condition': ['error', { checkLoops: true }],
     'no-empty-function': 'off',
