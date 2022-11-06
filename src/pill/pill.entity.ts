@@ -8,7 +8,7 @@ import {
 
 import { EtcOtcCode } from './dto/etc_otc_code.enum';
 
-@Entity()
+@Entity({ name: 'Pill' })
 export class Pill {
   @PrimaryGeneratedColumn()
   id: string;
