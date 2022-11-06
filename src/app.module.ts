@@ -5,9 +5,9 @@ import { typeORMConfig } from 'config/typeorm.config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ContraindicateModule } from './contraindicate/contraindicate.module';
 import { PillController } from './pill/pill.controller';
 import { PillModule } from './pill/pill.module';
-import { ContraindicateModule } from './contraindicate/contraindicate.module';
 
 @Module({
   imports: [
