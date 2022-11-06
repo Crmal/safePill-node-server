@@ -6,6 +6,7 @@ import { typeORMConfig } from 'config/typeorm.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PillController } from './pill/pill.controller';
+import { PillModule } from './pill/pill.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { PillController } from './pill/pill.controller';
       isGlobal: true, // 전체적으로 사용하기 위해
     }),
     TypeOrmModule.forRoot(typeORMConfig),
+    PillModule,
   ],
   controllers: [AppController, PillController],
   providers: [AppService],

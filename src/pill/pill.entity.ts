@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { EtcOtcCode } from './dto/etc_otc_code.dto';
+import { EtcOtcCode } from './dto/etc_otc_code.enum';
 
 @Entity()
 export class Pill {
@@ -22,7 +22,7 @@ export class Pill {
   @Column()
   entp_name: string;
 
-  @Column()
+  @Column({ type: 'enum', enum: EtcOtcCode })
   etc_otc_code: EtcOtcCode;
 
   @Column()
