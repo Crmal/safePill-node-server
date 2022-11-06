@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller('contraindicate')
-export class ContraindicateController {}
+export class ContraindicateController {
+  @Post('/')
+  async fillData(@Body() a) {
+    return a;
+  }
+}
