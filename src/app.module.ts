@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PillController } from './pill/pill.controller';
 import { PillModule } from './pill/pill.module';
+import { ContraindicateModule } from './contraindicate/contraindicate.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { PillModule } from './pill/pill.module';
     }),
     TypeOrmModule.forRoot(typeORMConfig),
     PillModule,
+    ContraindicateModule,
   ],
   controllers: [AppController, PillController],
   providers: [AppService],
