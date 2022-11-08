@@ -1,7 +1,6 @@
 import { CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as redisStore from 'cache-manager-ioredis';
 import { typeORMConfig } from 'config/typeorm.config';
 
 import { AppController } from './app.controller';
