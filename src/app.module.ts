@@ -15,9 +15,7 @@ import { PillModule } from './pill/pill.module';
     ConfigModule.forRoot({
       isGlobal: true, // 전체적으로 사용하기 위해
     }),
-    CacheModule.register({
-      store: redisStore,
-    }),
+    CacheModule.register(),
     TypeOrmModule.forRoot(typeORMConfig),
     PillModule,
     ContraindicateModule,
