@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as redisStore from 'cache-manager-ioredis';
 import { typeORMConfig } from 'config/typeorm.config';
 
 import { AppController } from './app.controller';
@@ -13,6 +14,9 @@ import { PillModule } from './pill/pill.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 전체적으로 사용하기 위해
+    }),
+    CacheModule.register({
+      store: redisStore,
     }),
     TypeOrmModule.forRoot(typeORMConfig),
     PillModule,
