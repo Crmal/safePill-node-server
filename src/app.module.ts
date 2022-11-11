@@ -9,16 +9,18 @@ import { ContraindicateModule } from './contraindicate/contraindicate.module';
 import { PillController } from './pill/pill.controller';
 import { PillModule } from './pill/pill.module';
 
+const businessModules = [PillModule, ContraindicateModule];
+
+const libModules = [
+  ConfigModule.forRoot({
+    isGlobal: true, // 전체적으로 사용하기 위해
+  }),
+  CacheModule.register(),
+  TypeOrmModule.forRoot(typeORMConfig),
+];
+
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true, // 전체적으로 사용하기 위해
-    }),
-    CacheModule.register(),
-    TypeOrmModule.forRoot(typeORMConfig),
-    PillModule,
-    ContraindicateModule,
-  ],
+  imports: [...libModules, ...businessModules],
   controllers: [AppController, PillController],
   providers: [AppService],
 })
