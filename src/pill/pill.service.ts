@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
+import { FindByNameDto } from './dto/findByName.dto';
 import { FindBySymptomDto } from './dto/findBySymptom.dto';
 import { PillRepository } from './pill-repository';
 
@@ -17,5 +18,11 @@ export class PillService {
     );
     const pillCountData = await this.pillRepository.count();
     return { count: pillCountData, pill: pillBySymptomData };
+  }
+
+  async findPillByName(query: FindByNameDto) {
+    const pillByNameData = await this.pillRepository.findPillByName(query);
+    const pillCountData = await this.pillRepository.count();
+    return { count: pillCountData, pill: pillByNameData };
   }
 }
