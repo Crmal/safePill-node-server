@@ -18,7 +18,7 @@ export class PillSymptomValidationPipe implements PipeTransform {
   ];
 
   transform(query: FindBySymptomDto) {
-    const { page, limit, sort, symptom } = query;
+    const { page, limit, sort, symptom } = new FindBySymptomDto(query);
 
     if (!this.isSymptomValid(symptom)) {
       throw new ConflictException(
@@ -54,6 +54,6 @@ export class PillSymptomValidationPipe implements PipeTransform {
   private isSortValid(sort: any): boolean {
     const sortFilter = ['ASC', 'DESC'];
     const vaildData = sortFilter.includes(sort);
-    return !vaildData;
+    return vaildData;
   }
 }
