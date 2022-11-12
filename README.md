@@ -73,7 +73,7 @@ safepill
 ┃ ┣ app.controller.ts
 ┃ ┣ app.module.ts
 ┃ ┣ app.service.ts
-┃ ┣ main.ts
+┃ ┗ main.ts
 ┣ .dockerignore
 ┣ .env
 ┣ .eslintrc.js
