@@ -15,6 +15,7 @@ export class PillService {
     const pillBySymptomData = await this.pillRepository.findPillBySymptom(
       query,
     );
-    return pillBySymptomData;
+    const pillCountData = await this.pillRepository.count();
+    return { count: pillCountData, pill: pillBySymptomData };
   }
 }

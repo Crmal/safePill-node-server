@@ -3,11 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { EtcOtcCode } from './dto/etc_otc_code.enum';
 
+@Unique(['item_seq'])
 @Entity({ name: 'Pill' })
 export class Pill {
   @PrimaryGeneratedColumn()

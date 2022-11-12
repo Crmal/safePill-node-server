@@ -1,4 +1,5 @@
 import { ConflictException, PipeTransform } from '@nestjs/common';
+import { isNaN } from 'lodash';
 
 import { FindBySymptomDto } from '../dto/findBySymptom.dto';
 
@@ -17,17 +18,42 @@ export class PillSymptomValidationPipe implements PipeTransform {
   ];
 
   transform(query: FindBySymptomDto) {
-    if (!this.isSymptomValid(query?.symptom)) {
+    const { page, limit, sort, symptom } = query;
+
+    if (!this.isSymptomValid(symptom)) {
       throw new ConflictException(
-        `${query?.symptom} 요청은 symptom option이 아닙니다.`,
+        `${symptom} 요청은 symptom option이 아닙니다.`,
       );
+    }
+
+    if (!this.isNumberValid(page)) {
+      throw new ConflictException(`${page} 요청은 page option이 아닙니다.`);
+    }
+
+    if (!this.isNumberValid(limit)) {
+      throw new ConflictException(`${limit} 요청은 limit option이 아닙니다.`);
+    }
+
+    if (!this.isSortValid(sort)) {
+      throw new ConflictException(`${sort} 요청은 sort option이 아닙니다.`);
     }
 
     return new FindBySymptomDto(query);
   }
 
-  private isSymptomValid(symptom: any) {
+  private isSymptomValid(symptom: any): boolean {
     const index = this.PillOptions.indexOf(symptom);
     return index !== -1;
+  }
+
+  private isNumberValid(value: any): boolean {
+    const validData = isNaN(Number(value));
+    return !validData;
+  }
+
+  private isSortValid(sort: any): boolean {
+    const sortFilter = ['ASC', 'DESC'];
+    const vaildData = sortFilter.includes(sort);
+    return !vaildData;
   }
 }

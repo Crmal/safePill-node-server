@@ -17,7 +17,6 @@ export class PillRepository extends Repository<Pill> {
       .take(query.limit)
       .skip(query.page)
       .getMany();
-    console.log(query);
     return pillData;
   }
 }
