@@ -20,6 +20,8 @@ yarn start:dev
 ## .env
 
 ```
+DB_PASSWORD=
+DB_NAME=
 
 ```
 
@@ -27,6 +29,8 @@ yarn start:dev
 
 ```
 MySQL
+Redis
+docker-compose
 ```
 
 [Docker Compose](https://docs.docker.com/compose/)를 이용하여 쉽게 실행할 수 있습니다.
@@ -34,5 +38,53 @@ MySQL
 실행 전 .env파일이 설정되어 있어야 합니다.
 
 ```shell
-docker-compose up -d
+docker-compose up --build -d
+```
+
+## File-structure
+
+```
+safepill
+┣ src
+┃ ┣ common
+┃ ┃ ┗ interceptors
+┃ ┃ ┃ ┗ wrap-response.interceptor.ts
+┃ ┣ contraindicate
+┃ ┃ ┣ dto
+┃ ┃ ┣ contraindicate-repository.ts
+┃ ┃ ┣ contraindicate.controller.ts
+┃ ┃ ┣ contraindicate.entity.ts
+┃ ┃ ┣ contraindicate.module.ts
+┃ ┃ ┗ contraindicate.service.ts
+┃ ┣ pill
+┃ ┃ ┣ dto
+┃ ┃ ┃ ┣ etc_otc_code.enum.ts
+┃ ┃ ┃ ┣ findByName.dto.ts
+┃ ┃ ┃ ┗ findBySymptom.dto.ts
+┃ ┃ ┣ pipes
+┃ ┃ ┃ ┣ pill-name-vaildation.pipe.ts
+┃ ┃ ┃ ┗ pill-symptom-vaildation.pipe.ts
+┃ ┃ ┣ pill-repository.ts
+┃ ┃ ┣ pill.controller.ts
+┃ ┃ ┣ pill.entity.ts
+┃ ┃ ┣ pill.module.ts
+┃ ┃ ┗ pill.service.ts
+┃ ┣ app.controller.spec.ts
+┃ ┣ app.controller.ts
+┃ ┣ app.module.ts
+┃ ┣ app.service.ts
+┃ ┣ main.ts
+┣ .dockerignore
+┣ .env
+┣ .eslintrc.js
+┣ .gitignore
+┣ .prettierrc
+┣ Dockerfile
+┣ README.md
+┣ docker-compose.yml
+┣ nest-cli.json
+┣ package.json
+┣ tsconfig.build.json
+┣ tsconfig.json
+┗ yarn.lock
 ```
