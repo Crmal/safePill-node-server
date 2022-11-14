@@ -48,14 +48,7 @@ safepill
 ┣ src
 ┃ ┣ common
 ┃ ┃ ┗ interceptors
-┃ ┃ ┃ ┗ wrap-response.interceptor.ts
-┃ ┣ contraindicate
-┃ ┃ ┣ dto
-┃ ┃ ┣ contraindicate-repository.ts
-┃ ┃ ┣ contraindicate.controller.ts
-┃ ┃ ┣ contraindicate.entity.ts
-┃ ┃ ┣ contraindicate.module.ts
-┃ ┃ ┗ contraindicate.service.ts
+┃ ┃ ┗ ┗ wrap-response.interceptor.ts
 ┃ ┣ pill
 ┃ ┃ ┣ dto
 ┃ ┃ ┃ ┣ etc_otc_code.enum.ts
