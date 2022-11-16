@@ -13,7 +13,7 @@ import { EtcOtcCode } from './dto/etc_otc_code.enum';
 @Entity({ name: 'Pill' })
 export class Pill {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column()
   item_seq: string;
@@ -32,6 +32,9 @@ export class Pill {
 
   @Column()
   ee_doc_data: string;
+
+  @Column({ nullable: true })
+  link: string;
 
   @CreateDateColumn()
   createAt: Date;
