@@ -18,7 +18,10 @@ export class PillNameValidationPipe implements PipeTransform {
     if (!this.isSortValid(sort)) {
       throw new ConflictException(`${sort} 요청은 sort option이 아닙니다.`);
     }
-
+    // eslint-disable-next-line no-param-reassign
+    query.page = parseInt(page, 10);
+    // eslint-disable-next-line no-param-reassign
+    query.limit = parseInt(limit, 10);
     return new FindByNameDto(query);
   }
 

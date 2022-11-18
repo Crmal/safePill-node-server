@@ -13,16 +13,14 @@ export class PillService {
   ) {}
 
   async findPillBySymptom(query: FindBySymptomDto) {
-    const pillBySymptomData = await this.pillRepository.findPillBySymptom(
-      query,
-    );
-    const pillCountData = await this.pillRepository.count();
-    return { count: pillCountData, pill: pillBySymptomData };
+    const { pillData, nextPage, prevPage } =
+      await this.pillRepository.findPillBySymptom(query);
+    return { prevPage, nextPage, pill: pillData };
   }
 
   async findPillByName(query: FindByNameDto) {
-    const pillByNameData = await this.pillRepository.findPillByName(query);
-    const pillCountData = await this.pillRepository.count();
-    return { count: pillCountData, pill: pillByNameData };
+    const { pillData, nextPage, prevPage } =
+      await this.pillRepository.findPillByName(query);
+    return { prevPage, nextPage, pill: pillData };
   }
 }
