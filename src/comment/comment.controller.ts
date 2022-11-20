@@ -1,4 +1,8 @@
 import { Controller } from '@nestjs/common';
 
-@Controller('comment')
-export class CommentController {}
+@Controller('node/comment')
+export class CommentController {
+  async getComment() {
+    return 'getComment';
+  }
+}
