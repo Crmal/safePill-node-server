@@ -5,10 +5,10 @@ import { typeORMConfig } from 'config/typeorm.config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PillController } from './pill/pill.controller';
+import { CommentModule } from './comment/comment.module';
 import { PillModule } from './pill/pill.module';
 
-const businessModules = [PillModule];
+const businessModules = [PillModule, CommentModule];
 
 const libModules = [
   ConfigModule.forRoot({
@@ -19,8 +19,8 @@ const libModules = [
 ];
 
 @Module({
-  imports: [...libModules, ...businessModules],
-  controllers: [AppController, PillController],
+  imports: [...libModules, ...businessModules, CommentModule],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
