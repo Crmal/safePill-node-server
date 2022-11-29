@@ -31,5 +31,6 @@ export class CommentRepository extends Repository<Comment> {
   async createById(pill: Pill, comment: string, userName) {
     const commentData = this.create({ comment, pill, userName });
     await this.save(commentData);
+    return commentData;
   }
 }
