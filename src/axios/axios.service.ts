@@ -13,7 +13,14 @@ export class AxiosService {
     try {
       const userName = await lastValueFrom(
         this.httpService
-          .get('http://localhost:8080/java/auth', requestConfig)
+          .get(
+            `http://${
+              process.env.LAUNCH_ENV === 'docker-compose'
+                ? 'backend'
+                : 'localhost'
+            }:8080/java/auth`,
+            requestConfig,
+          )
           .pipe(map((res) => res.data.result.data.username)),
       );
       return userName;
