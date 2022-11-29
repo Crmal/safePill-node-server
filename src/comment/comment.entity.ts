@@ -13,7 +13,13 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Pill, (pill) => pill.item_seq)
+  @Column()
+  comment: string;
+
+  @Column()
+  userName: string;
+
+  @ManyToOne(() => Pill, (pill) => pill.id)
   pill: Pill;
 
   @CreateDateColumn()
