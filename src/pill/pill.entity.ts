@@ -1,7 +1,9 @@
+import { Comment } from 'src/comment/comment.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -35,6 +37,9 @@ export class Pill {
 
   @Column({ nullable: true })
   link: string;
+
+  @OneToMany(() => Comment, (comment) => comment.pill)
+  comments: Comment[];
 
   @CreateDateColumn()
   createAt: Date;
