@@ -20,6 +20,13 @@ export class CommentService {
     private axiosService: AxiosService,
   ) {}
 
+  async getAllComment() {
+    const pillData = await this.commentRepository.find({
+      order: { createAt: 'DESC' },
+    });
+    return pillData;
+  }
+
   async getComment(pillId: string) {
     const pillData = await this.pillRepository.findOne({
       where: { id: pillId },
@@ -57,10 +64,8 @@ export class CommentService {
     return this.commentRepository.updateById(pillData, comment);
   }
 
-  async deleteComment(pillId: string) {
-    const pillData = await this.pillRepository.findOne({
-      where: { item_seq: pillId },
-    });
-    return this.commentRepository.deleteById(pillData);
+  async deleteComment(commentId: string, accessToken: string) {
+    const userName = await this.axiosService.getUserName(accessToken);
+    return this.commentRepository.deleteById(commentId, userName);
   }
 }

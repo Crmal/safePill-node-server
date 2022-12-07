@@ -1,3 +1,4 @@
+import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { Pill } from 'src/pill/pill.entity';
 import { EntityRepository, Repository } from 'typeorm';
 
@@ -22,8 +23,16 @@ export class CommentRepository extends Repository<Comment> {
     return commnetData;
   }
 
-  async deleteById(pillId: Pill) {
-    const commentData = await this.findOneById(pillId);
+  async deleteById(commentId: string, userName: string) {
+    const commentData = await this.findOne({
+      where: { id: commentId },
+    });
+    if (!commentData) {
+      throw new NotFoundException(`해당 ${commentId}는 없습니다.`);
+    }
+    if (!(commentData?.userName === userName)) {
+      throw new UnauthorizedException('권한이 없습니다.');
+    }
     await this.remove(commentData);
     return commentData;
   }

@@ -17,7 +17,14 @@ export class CommentController {
 
   @Get('/:pillId')
   async getComment(@Param('pillId') pillId: string) {
-    return this.commentService.getComment(pillId);
+    const pillData = await this.commentService.getComment(pillId);
+    return pillData;
+  }
+
+  @Get()
+  async getAllComment() {
+    const pillData = await this.commentService.getAllComment();
+    return pillData;
   }
 
   @Post('/:pillId')
@@ -37,8 +44,11 @@ export class CommentController {
     return this.commentService.updateComment(pillId, comment);
   }
 
-  @Delete('/:pillId')
-  async deleteComment(@Param('pillId') pillId: string) {
-    return this.commentService.deleteComment(pillId);
+  @Delete('/:commentId')
+  async deleteComment(
+    @Headers('accessToken') accessToken: string,
+    @Param('commentId') commentId: string,
+  ) {
+    return this.commentService.deleteComment(commentId, accessToken);
   }
 }
