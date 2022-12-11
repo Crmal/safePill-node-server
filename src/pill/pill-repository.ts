@@ -10,6 +10,7 @@ export class PillRepository extends Repository<Pill> {
    * 증상을 넘길시 해당 증상을 해결 할 수 있는 약을 검색해주는 함수
    */
   async findPillBySymptom(query: FindBySymptomDto) {
+    const pilldata1 = await this.findOne({ where: { id: 1 } });
     const pillData = await this.createQueryBuilder('pill')
       .where('pill.ee_doc_data like (:symptom)', {
         symptom: `%${query.symptom}%`,
@@ -32,7 +33,7 @@ export class PillRepository extends Repository<Pill> {
   async findPillByName(query: FindByNameDto) {
     const pillData = await this.createQueryBuilder('pill')
       .where('pill.item_name like (:name)', {
-        name: `%${query.name}%`,
+        name: `%**${query.name}**%`,
       })
       .orderBy('item_name', query.sort)
       .take(query.limit)
