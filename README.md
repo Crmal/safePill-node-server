@@ -50,8 +50,14 @@ safepill
 ┃ ┃ ┗ interceptors
 ┃ ┃ ┗ ┗ wrap-response.interceptor.ts
 ┃ ┣ axios
-┃ ┣ axios.module.ts
-┃ ┣ axios.service.ts
+┃ ┣ ┣ axios.module.ts
+┃ ┣ ┗ axios.service.ts
+┃ ┣ comment
+┃ ┣ ┣ comment.controller.ts
+┃ ┣ ┣ comment.entity.ts
+┃ ┣ ┣ comment.module.ts
+┃ ┣ ┣ comment.service.ts
+┃ ┣ ┗ commnet-repository.ts
 ┃ ┣ pill
 ┃ ┃ ┣ dto
 ┃ ┃ ┃ ┣ etc_otc_code.enum.ts
