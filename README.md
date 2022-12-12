@@ -49,6 +49,9 @@ safepill
 ┃ ┣ common
 ┃ ┃ ┗ interceptors
 ┃ ┃ ┗ ┗ wrap-response.interceptor.ts
+┃ ┣ axios
+┃ ┣ axios.module.ts
+┃ ┣ axios.service.ts
 ┃ ┣ pill
 ┃ ┃ ┣ dto
 ┃ ┃ ┃ ┣ etc_otc_code.enum.ts
